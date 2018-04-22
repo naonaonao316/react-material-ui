@@ -33,29 +33,52 @@ class Content extends Component {
 
   render() {
     const { selection } = this.state;
+    const categories = ['High Visits/High CVR',
+                        'High Visits/Middle CVR',
+                        'High Visits/Low CVR',
+                        'Middle Visits/High CVR',
+                        'Middle Visits/Middle CVR',
+                        'Middle Visits/Low CVR',
+                        'Low Visits/High CVR',
+                        'Low Visits/Middle CVR',
+                        'Low Visits/Low CVR'];
+
+    const keywords = ['Nike',
+                      'ビール',
+                      'ふるさと納税',
+                      'LG TV',
+                      'くまもん',
+                      'Game of thrones',
+                      'Breaking Bad',
+                      '飲料水',
+                      'Asahi SuperDry',
+                      '楽天パンダ',
+                      '送料無料',
+                      'アウトレット',
+                      'カーディガン',
+                      'ジャケット',
+                      'breaking benjamin',
+                      'メタルギアソリッド'];
+
+   let data_num = 50000;
+   let rows     = [];
+
+   let row_data = Array.from({length: data_num}, (v, i) => {
+     return Object.assign({}, {
+       id: i,
+       category: categories[Math.floor(Math.random()*categories.length)],
+       keyword: keywords[Math.floor(Math.random()*keywords.length)],
+       visits: Math.floor(Math.random() * 120000),
+       cvr: Math.random()
+     });
+   })
+
     return (
       <div>
         <Header />
         <Paper>
         <Grid
-          rows={[
-            { category: 'High Visits/Low CVR', keyword: "ふるさと納税", visits: 123099, cvr: 0.02 },
-            { category: 'High Visits/Low CVR', keyword: "NIKE", visits: 34443, cvr: 0.03 },
-            { category: 'High Visits/Low CVR', keyword: "LG TV", visits: 3434, cvr: 0.003 },
-            { category: 'High Visits/Low CVR', keyword: "くまもん", visits: 4343, cvr: 0.3 },
-            { category: 'High Visits/Low CVR', keyword: "Game of thrones", visits: 545554, cvr: 0.03 },
-            { category: 'High Visits/Low CVR', keyword: "Breaking bad", visits: 54343, cvr: 0.02 },
-            { category: 'High Visits/Low CVR', keyword: "送料無料", visits: 333, cvr: 0.3 },
-            { category: 'High Visits/Low CVR', keyword: "飲料水", visits: 323232, cvr: 0.0003 },
-            { category: 'High Visits/Low CVR', keyword: "飲料水", visits: 323232, cvr: 0.0003 },
-            { category: 'High Visits/Low CVR', keyword: "飲料水", visits: 323232, cvr: 0.0003 },
-            { category: 'High Visits/Low CVR', keyword: "飲料水", visits: 323232, cvr: 0.0003 },
-            { category: 'High Visits/Low CVR', keyword: "飲料水", visits: 323232, cvr: 0.0003 },
-            { category: 'High Visits/Low CVR', keyword: "飲料水", visits: 323232, cvr: 0.0003 },
-            { category: 'High Visits/Low CVR', keyword: "飲料水", visits: 323232, cvr: 0.0003 },
-            { category: 'High Visits/Low CVR', keyword: "飲料水", visits: 323232, cvr: 0.0003 },
-            { category: 'High Visits/Low CVR', keyword: "飲料水", visits: 323232, cvr: 0.0003 },
-          ]}
+          rows={row_data}
           columns={[
             { name: 'category', title: 'Category' },
             { name: 'keyword', title: 'Keyword' },
@@ -68,12 +91,13 @@ class Content extends Component {
           />
           <PagingState
             defaultCurrentPage={0}
-            pageSize={6}
+            pageSize={50}
           />
           <SortingState
             defaultSorting={[{ columnName: 'visits', direction: 'desc' }]}
           />
           <FilteringState defaultFilters={[]} />
+          <IntegratedFiltering />
           <IntegratedSelection />
           <IntegratedPaging />
           <IntegratedSorting /> 
