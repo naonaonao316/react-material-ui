@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from './layouts/Header.js';
 import Paper from 'material-ui/Paper';
 import {
+  SearchState,
   SelectionState,
   PagingState,
   SortingState,
@@ -14,6 +15,8 @@ import {
 import {
   Grid,
   Table,
+  Toolbar,
+  SearchPanel,
   TableHeaderRow,
   TableFilterRow,
   TableSelection,
@@ -96,6 +99,7 @@ class Content extends Component {
           <SortingState
             defaultSorting={[{ columnName: 'visits', direction: 'desc' }]}
           />
+          <SearchState />
           <FilteringState defaultFilters={[]} />
           <IntegratedFiltering />
           <IntegratedSelection />
@@ -106,6 +110,8 @@ class Content extends Component {
           <TableHeaderRow showSortingControls />
           <TableSelection showSelectAll />
           <PagingPanel />
+          <Toolbar />
+          <SearchPanel />
         </Grid>
         </Paper>
       </div>
