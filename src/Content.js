@@ -7,10 +7,12 @@ import {
   PagingState,
   SortingState,
   FilteringState,
+  GroupingState,
   IntegratedFiltering,
   IntegratedSorting,
   IntegratedPaging,
   IntegratedSelection,
+  IntegratedGrouping
 } from '@devexpress/dx-react-grid';
 import {
   Grid,
@@ -20,7 +22,10 @@ import {
   TableHeaderRow,
   TableFilterRow,
   TableSelection,
+  TableGroupRow,
   PagingPanel,
+  GroupingPanel,
+  DragDropProvider,
 } from '@devexpress/dx-react-grid-material-ui';
 
 class Content extends Component {
@@ -76,6 +81,12 @@ class Content extends Component {
      });
    })
 
+   let groupingStateColumnExtensions = [
+     {columnName: 'keyword', groupingEnabled: false},
+     {columnName: 'visits', groupingEnabled: false},
+     {columnName: 'cvr', groupingEnabled: false},
+   ];
+
     return (
       <div>
         <Header />
@@ -92,6 +103,7 @@ class Content extends Component {
             selection={selection}
             onSelectionChange={this.changeSelection}
           />
+          <DragDropProvider />
           <PagingState
             defaultCurrentPage={0}
             pageSize={50}
@@ -100,17 +112,21 @@ class Content extends Component {
             defaultSorting={[{ columnName: 'visits', direction: 'desc' }]}
           />
           <SearchState />
+          <GroupingState defaultGrouping={[]} columnExtensions={groupingStateColumnExtensions} />
           <FilteringState defaultFilters={[]} />
           <IntegratedFiltering />
           <IntegratedSelection />
           <IntegratedPaging />
-          <IntegratedSorting /> 
+          <IntegratedSorting />
+          <IntegratedGrouping />
           <Table />
           <TableFilterRow />
-          <TableHeaderRow showSortingControls />
-          <TableSelection showSelectAll />
+          <TableHeaderRow showSortingControls showGroupingControls />
+          <TableGroupRow />
+          <TableSelection showSelectAll showGroupingControls />
           <PagingPanel />
           <Toolbar />
+          <GroupingPanel />
           <SearchPanel />
         </Grid>
         </Paper>
