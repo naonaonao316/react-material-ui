@@ -11,6 +11,7 @@ import Hidden from 'material-ui/Hidden';
 import Divider from 'material-ui/Divider';
 import MenuIcon from '@material-ui/icons/Menu';
 import { mailFolderListItems, otherMailFolderListItems } from './tileData';
+import SampleChart from '../HighChartsSample';
 
 const drawerWidth = 240;
 
@@ -117,7 +118,7 @@ class ResponsiveDrawer extends React.Component {
         </Hidden>
         <main className={classes.content}>
           <div className={classes.toolbar} />
-          <Typography noWrap>{'You think water moves fast? You should see ice.'}</Typography>
+          <SampleChart />
         </main>
       </div>
     );

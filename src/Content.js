@@ -27,6 +27,7 @@ import {
   GroupingPanel,
   DragDropProvider,
 } from '@devexpress/dx-react-grid-material-ui';
+import SampleChart from './HighChartsSample';
 
 class Content extends Component {
   constructor(props) {
@@ -94,6 +95,7 @@ class Content extends Component {
         <Grid
           rows={row_data}
           columns={[
+            { name: 'id', title: 'ID'},
             { name: 'category', title: 'Category' },
             { name: 'keyword', title: 'Keyword' },
             { name: 'visits', title: 'Visits' },
