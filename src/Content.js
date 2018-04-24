@@ -29,6 +29,7 @@ import {
 } from '@devexpress/dx-react-grid-material-ui';
 import SampleChart from './HighChartsSample';
 import ExpansionPanel from './ExpansionPanel';
+import SimpleTable from './SimpleTable';
 
 class Content extends Component {
   constructor(props) {
@@ -92,6 +93,7 @@ class Content extends Component {
     return (
       <div>
         <ExpansionPanel />
+        <SimpleTable />
         <Header />
         <Paper>
         <Grid
