@@ -28,6 +28,7 @@ import {
   DragDropProvider,
 } from '@devexpress/dx-react-grid-material-ui';
 import SampleChart from './HighChartsSample';
+import ExpansionPanel from './ExpansionPanel';
 
 class Content extends Component {
   constructor(props) {
@@ -90,6 +91,7 @@ class Content extends Component {
 
     return (
       <div>
+        <ExpansionPanel />
         <Header />
         <Paper>
         <Grid

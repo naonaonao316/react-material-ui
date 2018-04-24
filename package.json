@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "highcharts": "^6.1.0",
-    "highcharts-react-official": "^1.1.0"
+    "highcharts-react-official": "^1.1.0",
+    "material-ui-dropzone": "^1.0.3"
   }
 }
